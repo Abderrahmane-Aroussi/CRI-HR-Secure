@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # =============================================================================
 # CRI-HR-Secure — Automated Setup Script
-# Extracted from the internship report (ESTG Guelmim, 2026)
+# Academic internship project — ESTG Guelmim, 2026
+# Designed for a virtualised development environment (Ubuntu 22.04 LTS VM)
 #
-# Run on: Ubuntu 22.04 LTS VM (IP 192.168.56.101)
 # Usage:  chmod +x setup.sh && sudo ./setup.sh
 # =============================================================================
 
@@ -23,15 +23,15 @@ sudo openssl req -x509 -newkey rsa:4096 \
 echo "=== [3/7] Configuring Nginx reverse proxy ==="
 sudo cp configs/nginx-odoo.conf /etc/nginx/sites-available/odoo
 sudo ln -sf /etc/nginx/sites-available/odoo /etc/nginx/sites-enabled/odoo
-# Disable default site if present
+# Remove default site if present (clean configuration)
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl enable nginx
 sudo systemctl reload nginx
 
 echo "=== [4/7] Loading custom Odoo Docker image ==="
-# Expects cri-odoo-custom.tar.gz to be present in the current directory.
-# Build it on the development machine with:
+# The custom image is built on a development machine then transferred.
+# Build commands (for reference):
 #   docker build -t cri-odoo-custom:v1 .
 #   docker save cri-odoo-custom:v1 | gzip > cri-odoo-custom.tar.gz
 if [ -f "cri-odoo-custom.tar.gz" ]; then
