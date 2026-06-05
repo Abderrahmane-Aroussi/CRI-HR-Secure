@@ -1,0 +1,13 @@
+# Fail2Ban jail configuration — odoo-https
+# Deploy to: /etc/fail2ban/jail.local
+# Then: sudo systemctl restart fail2ban
+# Verify: sudo fail2ban-client status odoo-https
+
+[odoo-https]
+enabled  = true
+port     = 443
+filter   = odoo-https
+logpath  = /var/log/nginx/access.log
+maxretry = 5
+findtime = 300
+bantime  = 3600

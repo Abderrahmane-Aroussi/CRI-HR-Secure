@@ -1,0 +1,8 @@
+#!/bin/bash
+cd ~
+docker-compose up -d
+sudo systemctl start nginx
+sudo systemctl start fail2ban
+sudo systemctl start auditd
+sudo systemctl start netdata
+echo "All services started. Odoo: https://192.168.56.101, Netdata: http://192.168.56.101:19999"

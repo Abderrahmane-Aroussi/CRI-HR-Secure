@@ -1,0 +1,71 @@
+# =============================================================================
+# CRI-HR-Secure — .gitignore
+# =============================================================================
+
+# --- Sensitive files (NEVER commit) ------------------------------------------
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+.env
+.env.*
+secrets/
+passwords.txt
+
+# --- Docker -------------------------------------------------------------------
+cri-odoo-custom.tar.gz
+*.tar.gz
+docker-compose.override.yml
+
+# --- Python -------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# --- LaTeX (report source files, if added) ------------------------------------
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+_minted-*/
+
+# --- OS / editors -------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# --- Large binary / media files -----------------------------------------------
+*.ova
+*.vmdk
+*.iso
+*.mp4
+*.mov
+
+# --- Logs (do not commit production logs) -------------------------------------
+*.log
+logs/

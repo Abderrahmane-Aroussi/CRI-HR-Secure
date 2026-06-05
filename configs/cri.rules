@@ -1,0 +1,12 @@
+# Auditd watch rules — CRI-HR-Secure
+# Deploy to: /etc/audit/rules.d/cri.rules
+# Then: sudo systemctl restart auditd
+# Verify: sudo systemctl status auditd
+#
+# Monitors write (w) and attribute-change (a) events on critical infrastructure files.
+# All events are logged to /var/log/audit/audit.log with timestamp, PID, and user identity.
+
+-w /etc/nginx/nginx.conf              -p wa -k nginx_config
+-w /etc/nginx/sites-available/odoo   -p wa -k nginx_config
+-w /home/odoo/docker-compose.yml     -p wa -k docker_config
+-w /home/odoo/Dockerfile             -p wa -k docker_config
